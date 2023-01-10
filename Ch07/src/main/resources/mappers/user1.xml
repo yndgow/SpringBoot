@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.co.ch07.mapper.User1Mapper">
+<mapper namespace="kr.co.ch07.dao.User1DAO">
 	<insert id="insertUser1vo">
 		INSERT INTO `user1` VALUES (#{uid}, #{name}, #{hp}, #{age});
 	</insert>
