@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 	<head>
 		<meta charset="UTF-8">
 		<title>user2/login</title>
@@ -7,11 +8,12 @@
 	<body>
 		<h3>user2 로그인</h3>
 		<a th:href="@{/}">메인이동</a>
+		<a th:href="@{/user2/register}">회원가입</a>
 		<form action="#" method="post">
 			<input type="text" name="uid" placeholder="아이디 입력"><br>
-			<input type="text" name="pass" placeholder="비밀번호 입력"><br>
+			<input type="password" name="pass" placeholder="비밀번호 입력"><br>
+			<label>자동로그인</label><input type="checkbox" name="remember-me">
 			<input type="submit" value="로그인">
 		</form>
-		
 	</body>
 </html>
