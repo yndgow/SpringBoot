@@ -19,5 +19,6 @@ public class PersistentLogins {
     private String series;
     private String username;
     private String token;
-    private Date lastUsed;
+    private Date last_Used;
+    
 }

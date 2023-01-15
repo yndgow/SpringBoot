@@ -57,9 +57,9 @@ public class SecurityConfig {
         
         // 자동 로그인
         http.rememberMe()
-        				.key("remember-me")
         				.userDetailsService(accountService)
-        				.tokenRepository(tokenRepository());
+        				.tokenRepository(tokenRepository())
+        				.tokenValiditySeconds(60);
         
         return http.build();
     }
