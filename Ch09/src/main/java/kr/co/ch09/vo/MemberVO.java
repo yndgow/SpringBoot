@@ -4,10 +4,12 @@ package kr.co.ch09.vo;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,6 +22,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "member")
+@EntityListeners(AuditingEntityListener.class)
 public class MemberVO {
 
 	@Id
@@ -29,6 +32,6 @@ public class MemberVO {
 	private String hp;
 	private String pos;
 	private String dep;
-	@CreationTimestamp
+	@LastModifiedDate
 	private LocalDateTime rdate;
 }
