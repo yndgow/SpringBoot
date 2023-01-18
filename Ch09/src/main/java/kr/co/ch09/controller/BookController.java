@@ -16,7 +16,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import kr.co.ch09.vo.BookVO;
 import kr.co.ch09.vo.BooksVO;
 
 
@@ -31,9 +30,6 @@ public class BookController {
 		// 네이버 open API 헤더 설정
         String clientId = "SotPVU2pyldtxz6WN_l6"; //애플리케이션 클라이언트 아이디
         String clientSecret = "CHXEN_ub4W"; //애플리케이션 클라이언트 시크릿
-		
-        
-        //String apiURL = "https://openapi.naver.com/v1/search/book.json?query={text}";    // JSON 결과
         
         URI uri = UriComponentsBuilder
         		.fromUriString("https://openapi.naver.com")
@@ -54,6 +50,7 @@ public class BookController {
         RestTemplate restTemplate = new RestTemplate();
         
         ResponseEntity<String> result = restTemplate.exchange(req, String.class);
+        System.out.println("StatusCode : " + result.getStatusCode());
         
         
         // JSON 파싱
