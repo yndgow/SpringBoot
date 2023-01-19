@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 	// 아이디 중복 체크
 	btnCheckUid.addEventListener('click', (e)=>{
 		let uid = document.querySelector('input[name=uid]')
-		url = '/SBoard/user/checkUid/'+uid.value;
+		url = '/SBoard/user/uid/'+uid.value;
 		fetch(url)
 		.then(res => {
 			if(!res.ok) throw new Error(res.statusText);

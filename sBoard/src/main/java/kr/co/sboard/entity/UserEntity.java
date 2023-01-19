@@ -11,7 +11,9 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "board_user")
-public class UserVO {
+
+public class UserEntity {
+	
 	@Id
 	private String uid;
 	private String pass;

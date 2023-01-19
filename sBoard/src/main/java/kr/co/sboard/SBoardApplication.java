@@ -1,5 +1,7 @@
 package kr.co.sboard;
 
+import java.security.Principal;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
@@ -15,8 +17,12 @@ public class SBoardApplication {
 	}
 	
 	@GetMapping(value = {"/", "/index"})
-	public String index() {
-		return "/user/login";
+	public String index(Principal principal) {
+		
+		if(principal != null) {
+			return "redirect:/list";
+		}else {
+			return "redirect:/user/login";
+		}
 	}
-
 }

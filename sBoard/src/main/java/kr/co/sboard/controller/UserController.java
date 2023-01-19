@@ -53,7 +53,7 @@ public class UserController {
 	}
 	
 	@ResponseBody
-	@GetMapping("/user/checkUid/{uid}")
+	@GetMapping("/user/uid/{uid}")
 	public Map<String, Integer> checkUid(@PathVariable("uid") String uid) {
 		int result = userSer.countUser(uid);
 		Map<String, Integer> map = new HashMap<>();
