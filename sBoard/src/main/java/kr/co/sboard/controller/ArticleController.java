@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -21,7 +22,8 @@ public class ArticleController {
 	
 
 	@GetMapping("/list")
-	public String list() {
+	public String list(Model m) {
+		m.addAttribute("articles", articleService.selectArticles());
 		return "/list";
 	}
 	@GetMapping("/modify")

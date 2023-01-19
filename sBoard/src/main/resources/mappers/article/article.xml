@@ -23,4 +23,10 @@
 						<!-- `download` = #{download} -->
 						`rdate` = NOW();
 	</insert>
+	<select id="selectArticles" resultType="kr.co.sboard.vo.ArticleVO">
+		SELECT a.*, b.nick FROM `board_article` AS a
+		JOIN `board_user` AS b 
+		USING (`uid`)
+		ORDER BY (`no`) DESC;
+	</select>
 </mapper>

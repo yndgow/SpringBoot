@@ -20,4 +20,6 @@ public class ArticleVO {
 	private String uid;
 	private String regip;
 	private LocalDateTime rdate;
+	
+	private String nick;
 }

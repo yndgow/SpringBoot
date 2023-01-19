@@ -27,19 +27,14 @@ public class ArticleService{
 		int result = 0;
 		MultipartFile file = vo.getFname();
 		log.info(file.getOriginalFilename());
-		
-		if(file.isEmpty()) {
+		log.info(file.getName());
+		if(file.getOriginalFilename() == "") {
 			// 파일 첨부 n
-			log.info("here1");
-			
 			vo.setFile(0);
 			result = dao.insertArticle(vo);
 			
-			
 		}else {
 			// 파일 첨부 y
-			
-			log.info("here2");
 			vo.setFile(1);
 			// DB 글 insert
 			result = dao.insertArticle(vo);
@@ -50,13 +45,8 @@ public class ArticleService{
 			
 			// 파일 업로드
 			fileUpload(file, fvo);
-			
 			dao.insertFile(fvo);
 		}
-		
-		
-		
-		
 		return result;
 	}
 
