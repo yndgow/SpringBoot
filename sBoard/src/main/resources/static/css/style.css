@@ -92,6 +92,9 @@ footer > p {
     margin-top: 4px;
     margin-left: 6px;            
 }
+#user.login > form > table tr > td > input#remember-me {
+	width: 12px;
+}
 #user.login > form > .btnLogin {
     position: absolute;
     right: 46px;

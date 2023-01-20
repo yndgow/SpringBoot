@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 
 import kr.co.sboard.entity.UserEntity;
 import kr.co.sboard.repository.UserRepo;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Service
 public class SecurityUserService implements UserDetailsService{
 
@@ -17,7 +19,12 @@ public class SecurityUserService implements UserDetailsService{
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		UserEntity user =  repo.findById(username).get();
+		UserEntity user = null;
+		try {
+			user = repo.findById(username).get();
+		}catch (Exception e) {
+			log.error(e.getMessage());
+		}
 		
 		if(user == null) {
 			throw new UsernameNotFoundException(username);

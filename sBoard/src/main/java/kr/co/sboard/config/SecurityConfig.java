@@ -54,15 +54,20 @@ public class SecurityConfig {
         
         // 로그아웃
         http.logout()
-		.invalidateHttpSession(true)
-		.logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
-		.logoutSuccessUrl("/user/login?success=200");
+			.invalidateHttpSession(true)
+			.logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
+			.logoutSuccessUrl("/user/login?success=200");
         
         // 자동 로그인
         http.rememberMe()
         				.userDetailsService(securityUserService)
         				.tokenRepository(tokenRepository())
-        				.tokenValiditySeconds(60);
+        				.tokenValiditySeconds(600);
+        
+        http.exceptionHandling()
+        	.accessDeniedPage("/accessDenied");
+        
+        
         
         return http.build();
     }

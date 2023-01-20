@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>로그인</title>    
     <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <script th:src="@{/js/login.js}"></script>
 </head>
 <body>
     <div id="wrapper">
@@ -20,6 +21,16 @@
                     <tr>
                         <td><img th:src="@{/img/login_ico_pw.png}" alt="비밀번호"/></td>
                         <td><input type="password" name="pass" placeholder="비밀번호 입력"/></td>
+                    </tr>
+                    <tr>
+                    	<td>
+	                    	<input type="checkbox" name="remember-me" id="remember-me"/>
+                    	</td>
+                    	<td>
+	                    	
+	                    	<label>자동로그인</label>
+                    	</td>
+                    	
                     </tr>
                 </table>
                 <input type="submit" class="btnLogin" value="로그인"/>

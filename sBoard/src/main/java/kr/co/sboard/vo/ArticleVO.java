@@ -1,6 +1,5 @@
 package kr.co.sboard.vo;
 
-import java.time.LocalDateTime;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -19,7 +18,14 @@ public class ArticleVO {
 	private int hit;
 	private String uid;
 	private String regip;
-	private LocalDateTime rdate;
+	private String rdate;
 	
+	public String getRdate() {
+		return rdate.substring(2,10);
+	}
+	
+	// 추가필드
 	private String nick;
+	private FileVO fileVO;
+	
 }
