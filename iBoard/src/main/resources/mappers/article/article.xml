@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.iBoard.dao.ArticleDAO">
+    <select id="selectList" resultType="kr.co.iBoard.entity.ArticleEntity">
+        select * from `board_article`;
+    </select>
+
+</mapper>
