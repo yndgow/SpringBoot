@@ -8,8 +8,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class BoardController {
 
     @GetMapping("board/list")
-    public String list(Model model, String group){
+    public String list(Model model, String group, String cate){
+        if(group.equals("_croptalk") && cate == null){
+            cate = "story";
+        }else if(group.equals("_community") && cate == null){
+            cate = "notice";
+        }
+
+
+
         model.addAttribute("group", group);
+        model.addAttribute("cate", cate);
         return "board/list";
 
     }

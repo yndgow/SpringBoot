@@ -1,24 +1,20 @@
 <div id="sub">
   <div>
-    <img th:src="@{img/sub_top_tit1.png}" alt="" />
+    <img th:src="@{/img/sub_top_tit2.png}" alt="" />
   </div>
-  <section class="cate1">
+  <section class="market">
     <aside>
-      <img th:src="@{img/sub_aside_cate1_tit.png}" alt="" />
+      <img th:src="@{/img/sub_aside_cate2_tit.png}" alt="" />
       <ul>
         <li class="on">
-          <a href="./hello.html">
-            <img th:src="@{img/sub_cate1_lnb1.png}" alt="" />
-          </a>
-        </li>
-        <li>
-          <a href="./direction.html">
-            <img th:src="@{img/sub_cate1_lnb2.png}" alt="" />
+          <a th:href="@{/board/list(group=_market, cate=market)}">
+            <img th:src="@{/img/sub_cate2_lnb1.png}" alt="" />
           </a>
         </li>
       </ul>
     </aside>
     <article>
       <nav>
-        <img th:src="@{img/sub_nav_tit_cate1_tit1.png}" alt="">
+        <img th:src="@{/img/sub_nav_tit_cate2_tit1.png}" alt="">
+        <p>HOME > 장보기</p>
       </nav>

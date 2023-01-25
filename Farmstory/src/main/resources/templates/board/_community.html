@@ -1,24 +1,56 @@
-  <div id="sub">
+<div id="sub">
   <div>
-    <img th:src="@{img/sub_top_tit1.png}" alt="" />
+    <img th:src="@{/img/sub_top_tit5.png}" alt="" />
   </div>
-  <section class="cate1">
+  <section class="community">
     <aside>
-      <img th:src="@{img/sub_aside_cate1_tit.png}" alt="" />
+      <img th:src="@{/img/sub_aside_cate5_tit.png}" alt="" />
       <ul>
-        <li class="on">
-          <a href="./hello.html">
-            <img th:src="@{img/sub_cate1_lnb1.png}" alt="" />
+        <li th:class="${cate} == notice ? 'on' : ''">
+          <a th:href="@{/board/list(group=_community, cate=notice)}">
+            <img th:src="@{/img/sub_cate5_lnb1.png}" alt="" />
           </a>
         </li>
-        <li>
-          <a href="./direction.html">
-            <img th:src="@{img/sub_cate1_lnb2.png}" alt="" />
+        <li th:class="${cate} == daymeal ? 'on' : ''">
+          <a th:href="@{/board/list(group=_community, cate=daymeal)}">
+            <img th:src="@{/img/sub_cate5_lnb2.png}" alt="" />
           </a>
         </li>
+        <li th:class="${cate} == cooker ? 'on' : ''">
+          <a th:href="@{/board/list(group=_community, cate=cooker)}">
+            <img th:src="@{/img/sub_cate5_lnb3.png}" alt="" />
+          </a>
+        </li>
+        <li th:class="${cate} == qna ? 'on' : ''">
+          <a th:href="@{/board/list(group=_community, cate=qna)}">
+            <img th:src="@{/img/sub_cate5_lnb4.png}" alt="" />
+          </a>
+        </li>
+        <li th:class="${cate} == faq ? 'on' : ''">
+          <a th:href="@{/board/list(group=_community, cate=faq)}">
+            <img th:src="@{/img/sub_cate5_lnb5.png}" alt="" />
+          </a>
+        </li>
+
       </ul>
     </aside>
     <article>
       <nav>
-        <img th:src="@{img/sub_nav_tit_cate1_tit1.png}" alt="">
+        <th:block th:switch="${cate}">
+            <img th:case="notice" th:src="@{/img/sub_nav_tit_cate5_tit1.png}" alt="공지사항">
+            <img th:case="daymeal" th:src="@{/img/sub_nav_tit_cate5_tit2.png}" alt="오늘의식단">
+            <img th:case="cooker" th:src="@{/img/sub_nav_tit_cate5_tit3.png}" alt="나도요리사">
+            <img th:case="qna" th:src="@{/img/sub_nav_tit_cate5_tit4.png}" alt="1:1고객문의">
+            <img th:case="faq" th:src="@{/img/sub_nav_tit_cate5_tit5.png}" alt="자주묻는질문">
+
+        </th:block>
+        <p>HOME > 커뮤니티
+            <th:block th:switch="${cate}">
+                <em th:case="notice"> > 공지사항</em>
+                <em th:case="daymeal"> > 오늘의식단</em>
+                <em th:case="cooker"> > 나도요리사</em>
+                <em th:case="qna"> > 1:1고객문의</em>
+                <em th:case="faq"> > 자주묻는질문</em>
+            </th:block>
+        </p>
       </nav>

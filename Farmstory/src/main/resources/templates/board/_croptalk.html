@@ -1,14 +1,24 @@
 <div id="sub">
   <div>
-    <img th:src="@{/img/sub_top_tit1.png}" alt="" />
+    <img th:src="@{/img/sub_top_tit3.png}" alt="" />
   </div>
-  <section class="cate1">
+  <section class="croptalk">
     <aside>
-      <img th:src="@{/img/sub_aside_cate1_tit.png}" alt="" />
+      <img th:src="@{/img/sub_aside_cate3_tit.png}" alt="" />
       <ul>
-        <li class="">
-          <a th:href="@{/board/list(group=_croptalk)}">
-            <img th:src="@{/img/croptalk_lnb.png}" alt="" />
+        <li th:class="${cate} == story ? 'on' : ''">
+          <a th:href="@{/board/list(group=_croptalk, cate=story)}">
+            <img th:src="@{/img/sub_cate3_lnb1.png}" alt="" />
+          </a>
+        </li>
+        <li th:class="${cate} == grow ? 'on' : ''">
+          <a th:href="@{/board/list(group=_croptalk, cate=grow)}">
+            <img th:src="@{/img/sub_cate3_lnb2.png}" alt="" />
+          </a>
+        </li>
+        <li th:class="${cate} == school ? 'on' : ''">
+          <a th:href="@{/board/list(group=_croptalk, cate=school)}">
+            <img th:src="@{/img/sub_cate3_lnb3.png}" alt="" />
           </a>
         </li>
 
@@ -16,5 +26,15 @@
     </aside>
     <article>
       <nav>
-        <img th:src="@{/img/sub_nav_tit_cate1_tit1.png}" alt="">
+        <th:block th:switch="${cate}">
+            <img th:case="story" th:src="@{/img/sub_nav_tit_cate3_tit1.png}" alt="농작물이야기">
+            <img th:case="grow" th:src="@{/img/sub_nav_tit_cate3_tit2.png}" alt="텃밭가꾸기">
+            <img th:case="school" th:src="@{/img/sub_nav_tit_cate3_tit3.png}" alt="귀농학교">
+        </th:block>
+        <p>HOME > 농작물이야기
+            <th:block th:switch="${cate}">
+                <em th:case="grow"> > 텃밭가꾸기</em>
+                <em th:case="school"> > 귀농학교</em>
+            </th:block>
+        </p>
       </nav>

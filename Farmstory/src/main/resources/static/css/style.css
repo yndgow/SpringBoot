@@ -60,38 +60,38 @@ header .gnb > li {
   float: left;
   padding-top: 10px;
   box-sizing: border-box;
-  background-image: url("/Farmstory/img/head_menu_line.png");
+  background-image: url("../img/head_menu_line.png");
   background-repeat: no-repeat;
 }
 header .gnb > li:nth-child(1) > a {
-  background-image: url("/Farmstory/img/head_menu1.png");
+  background-image: url("../img/head_menu1.png");
 }
 header .gnb > li:nth-child(2) > a {
-  background-image: url("/Farmstory/img/head_menu2.png");
+  background-image: url("../img/head_menu2.png");
 }
 header .gnb > li:nth-child(3) > a {
-  background-image: url("/Farmstory/img/head_menu3.png");
+  background-image: url("../img/head_menu3.png");
 }
 header .gnb > li:nth-child(4) > a {
-  background-image: url("/Farmstory/img/head_menu4.png");
+  background-image: url("../img/head_menu4.png");
 }
 header .gnb > li:nth-child(5) > a {
-  background-image: url("/Farmstory/img/head_menu5.png");
+  background-image: url("../img/head_menu5.png");
 }
 header .gnb > li:nth-child(1) > a:hover {
-  background-image: url("/Farmstory/img/head_menu1_ov.png");
+  background-image: url("../img/head_menu1_ov.png");
 }
 header .gnb > li:nth-child(2) > a:hover {
-  background-image: url("/Farmstory/img/head_menu2_ov.png");
+  background-image: url("../img/head_menu2_ov.png");
 }
 header .gnb > li:nth-child(3) > a:hover {
-  background-image: url("/Farmstory/img/head_menu3_ov.png");
+  background-image: url("../img/head_menu3_ov.png");
 }
 header .gnb > li:nth-child(4) > a:hover {
-  background-image: url("/Farmstory/img/head_menu4_ov.png");
+  background-image: url("../img/head_menu4_ov.png");
 }
 header .gnb > li:nth-child(5) > a:hover {
-  background-image: url("/Farmstory/img/head_menu5_ov.png");
+  background-image: url("../img/head_menu5_ov.png");
 }
 header .gnb > li:nth-child(2) {
   position: relative;
@@ -348,24 +348,65 @@ main > .info .account {
   border-bottom: 1px solid #c2c2c2;
   margin-bottom: 16px;
 }
+#sub > section > article > nav > p{
+    text-align: right;
+}
 
 /* 팜스토리소개 */
-#sub > .introduction > aside > ul > li:nth-child(1) > a:hover {
+#sub > .introduction > aside > ul > li:nth-child(1) > a:hover,
+#sub > .introduction > aside > ul > li:nth-child(1).on > a{
   content: url("../img/hello_lnb_ov.png");
 }
-#sub > .introduction > aside > ul > li:nth-child(1).on > a {
-  content: url("../img/hello_lnb_ov.png");
-}
-#sub > .introduction > aside > ul > li:nth-child(2) > a:hover {
-  content: url("../img/direction_lnb_ov.png");
-}
-#sub > .introduction > aside > ul > li:nth-child(2).on > a {
+#sub > .introduction > aside > ul > li:nth-child(2) > a:hover,
+#sub > .introduction > aside > ul > li:nth-child(2).on > a{
   content: url("../img/direction_lnb_ov.png");
 }
 
 /* 장보기 */
-#sub > .cate2 > aside > ul > li:nth-child(1).on > a {
+#sub > .market > aside > ul > li:nth-child(1).on > a {
   content: url("../img/sub_cate2_lnb1_ov.png");
+}
+
+/* 농작물이야기 */
+#sub > .croptalk > aside > ul > li:nth-child(1) > a:hover,
+#sub > .croptalk > aside > ul > li:nth-child(1).on > a{
+    content: url("../img/sub_cate3_lnb1_ov.png");
+}
+#sub > .croptalk > aside > ul > li:nth-child(2) > a:hover,
+#sub > .croptalk > aside > ul > li:nth-child(2).on > a{
+    content: url("../img/sub_cate3_lnb2_ov.png");
+}
+#sub > .croptalk > aside > ul > li:nth-child(3) > a:hover,
+#sub > .croptalk > aside > ul > li:nth-child(3).on > a{
+    content: url("../img/sub_cate3_lnb3_ov.png");
+}
+
+/* 이벤트 */
+#sub > .event > aside > ul > li:nth-child(1) > a:hover,
+#sub > .event > aside > ul > li:nth-child(1).on > a{
+    content: url("../img/sub_cate4_lnb1_ov.png");
+}
+
+/* 커뮤니티 */
+#sub > .community > aside > ul > li:nth-child(1) > a:hover,
+#sub > .community > aside > ul > li:nth-child(1).on > a{
+    content: url("../img/sub_cate5_lnb1_ov.png");
+}
+#sub > .community > aside > ul > li:nth-child(2) > a:hover,
+#sub > .community > aside > ul > li:nth-child(2).on > a {
+    content: url("../img/sub_cate5_lnb2_ov.png");
+}
+#sub > .community > aside > ul > li:nth-child(3) > a:hover,
+#sub > .community > aside > ul > li:nth-child(3).on > a {
+    content: url("../img/sub_cate5_lnb3_ov.png");
+}
+#sub > .community > aside > ul > li:nth-child(4) > a:hover,
+#sub > .community > aside > ul > li:nth-child(4).on > a {
+    content: url("../img/sub_cate5_lnb4_ov.png");
+}
+#sub > .community > aside > ul > li:nth-child(5) > a:hover,
+#sub > .community > aside > ul > li:nth-child(5).on > a {
+    content: url("../img/sub_cate5_lnb5_ov.png");
 }
 
 /* 푸터 */
@@ -621,7 +662,6 @@ main #recent td{
     position: relative;
     width: 100%;
     height: auto;
-    margin: 60px auto;
 }
 #board.list table {
     width: 100%;
@@ -687,7 +727,7 @@ main #recent td{
 }
 /* 글쓰기 */
 #board.write {
-    width: 100%px;
+    width: 100%;
     height: auto;
     margin: 60px auto;
     overflow: hidden;

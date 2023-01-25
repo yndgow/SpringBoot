@@ -1,24 +1,21 @@
-  <div id="sub">
+<div id="sub">
   <div>
-    <img th:src="@{img/sub_top_tit1.png}" alt="" />
+    <img th:src="@{/img/sub_top_tit4.png}" alt="" />
   </div>
-  <section class="cate1">
+  <section class="event">
     <aside>
-      <img th:src="@{img/sub_aside_cate1_tit.png}" alt="" />
+      <img th:src="@{/img/sub_aside_cate4_tit.png}" alt="" />
       <ul>
         <li class="on">
-          <a href="./hello.html">
-            <img th:src="@{img/sub_cate1_lnb1.png}" alt="" />
+          <a th:href="@{/board/list(group=_event, cate=event)}">
+            <img th:src="@{/img/sub_cate4_lnb1.png}" alt="" />
           </a>
         </li>
-        <li>
-          <a href="./direction.html">
-            <img th:src="@{img/sub_cate1_lnb2.png}" alt="" />
-          </a>
-        </li>
+
       </ul>
     </aside>
     <article>
       <nav>
-        <img th:src="@{img/sub_nav_tit_cate1_tit1.png}" alt="">
+        <img th:src="@{/img/sub_nav_tit_cate4_tit1.png}" alt="이벤트">
+        <p>HOME > 이벤트 </p>
       </nav>
