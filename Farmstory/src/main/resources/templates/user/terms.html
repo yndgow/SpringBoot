@@ -1,20 +1,21 @@
 <th:block th:include="@{_header.html}"/>
+<script th:src="@{/js/terms.js}"></script>
 <main id="user" class="terms">
-    <table border="0">
+    <table>
         <caption>사이트 이용약관</caption>
         <tr>
             <td>
-                <textarea class="terms" readonly>[[${terms}]]</textarea>
+                <textarea class="terms" readonly>[[${terms.terms}]]</textarea>
                 <label><input type="checkbox" class="terms" id="terms">&nbsp;동의합니다.</label>
             </td>
         </tr>
     </table>
 
-    <table border="0">
+    <table>
         <caption>개인정보 취급방침</caption>
         <tr>
             <td>
-                <textarea class="privacy" readonly>[[${privacy}]]</textarea>
+                <textarea class="privacy" readonly>[[${terms.privacy}]]</textarea>
                 <label><input type="checkbox" class="privacy" id="privacy">&nbsp;동의합니다.</label>
             </td>
         </tr>

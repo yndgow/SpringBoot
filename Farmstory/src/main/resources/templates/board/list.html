@@ -13,15 +13,15 @@
             <th>날짜</th>
             <th>조회</th>
         </tr>
-        <!--/*
+
         <tr th:each="article:${articles}">
-            <td>[[${pageStartNum - articleStat.index}]]</td>
+            <td>[[${articleStat.index}]]</td>
             <td><a th:href="@{/view(no=${article.no})}">[[${article.title}]] &#91;[[${article.comment}]]&#93;</a></td>
-            <td>[[${article.nick}]]</td>
-            <td>[[${article.rdate}]]</td>
+            <td>[[${article.user.nick}]]</td>
+            <td>[[${#strings.substring(article.rdate, 2, 10)}]]</td>
             <td>[[${article.hit}]]</td>
         </tr>
-    */-->
+
 
     </table>
     <!--/*
