@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 	const btnCheckUid = document.getElementById('checkUid');
 	
 	// 아이디 중복 체크
-	btnCheckUid.addEventListener('click', (e)=>{
+	btnCheckUid.addEventListener('click', ()=>{
 		let uid = document.querySelector('input[name=uid]')
 		url = '/Farmstory/user/uid/'+uid.value;
 		fetch(url)
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 	
 	const btnPostCode = document.getElementById('btnPostCode');
 	
-	btnPostCode.addEventListener('click', (e)=>{
+	btnPostCode.addEventListener('click', ()=>{
 		execDaumPostcode();
 	});
 });

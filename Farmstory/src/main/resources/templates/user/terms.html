@@ -5,7 +5,7 @@
         <caption>사이트 이용약관</caption>
         <tr>
             <td>
-                <textarea class="terms" readonly>[[${terms.terms}]]</textarea>
+                <textarea class="terms" readonly>[[${terms[0].terms}]]</textarea>
                 <label><input type="checkbox" class="terms" id="terms">&nbsp;동의합니다.</label>
             </td>
         </tr>
@@ -15,7 +15,7 @@
         <caption>개인정보 취급방침</caption>
         <tr>
             <td>
-                <textarea class="privacy" readonly>[[${terms.privacy}]]</textarea>
+                <textarea class="privacy" readonly>[[${terms[0].privacy}]]</textarea>
                 <label><input type="checkbox" class="privacy" id="privacy">&nbsp;동의합니다.</label>
             </td>
         </tr>

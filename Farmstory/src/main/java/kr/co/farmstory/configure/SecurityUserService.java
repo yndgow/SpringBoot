@@ -1,7 +1,8 @@
 package kr.co.farmstory.configure;
 
+import kr.co.farmstory.entity.UserEntity;
+import kr.co.farmstory.repo.UserRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -11,29 +12,25 @@ import org.springframework.stereotype.Service;
 @Service
 public class SecurityUserService  implements UserDetailsService {
 
-//    @Autowired
-//    private UserRepo repo;
+    private final UserRepository repo;
+
+    public SecurityUserService(UserRepository repo) {
+        this.repo = repo;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        UserEntity user = null;
-//        try{
-//            user = repo.findById(username).get();
-//        }catch (Exception e){
-//            log.error(e.getMessage());
-//        }
-//
-//        if(user == null){
-//            throw new UsernameNotFoundException(username);
-//        }
-//
-//        UserDetails userDetails = MyUserDetails
-//                .builder()
-//                .user(user)
-//                .build();
+        UserEntity user;
+        if(repo.findById(username).isPresent()){
+            user = repo.findById(username).get();
+        }else{
+            throw new UsernameNotFoundException(username);
+        }
 
-//        return userDetails;
-        return null;
+        return MyUserDetails
+                .builder()
+                .user(user)
+                .build();
     }
 
 }

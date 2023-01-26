@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @Entity
 @Table(name = "board_article")
 public class ArticleEntity {
@@ -31,7 +30,5 @@ public class ArticleEntity {
     @ManyToOne(targetEntity = UserEntity.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "uid")
     private UserEntity user;
-
-    private String nick;
 
 }

@@ -1,4 +1,6 @@
 <th:block th:include="@{_header.html}"/>
+<script th:src="@{/js/register.js}"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <main id="user" class="register">
     <form th:action="@{/user/register}" method="post">
         <table border="1">
@@ -39,7 +41,7 @@
                 <td>
                     <p>공백없이 한글, 영문, 숫자 입력</p>
                     <input type="text" name="nick" placeholder="별명 입력"/>
-                    <button type="button"><img th:src="@{/img/chk_id.gif}" alt="중복확인"/></button>
+                    <button type="button" ><img th:src="@{/img/chk_id.gif}" alt="중복확인"/></button>
                     <span class="resultNick"></span>
                 </td>
             </tr>

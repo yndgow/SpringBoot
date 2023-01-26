@@ -2,13 +2,13 @@ package kr.co.farmstory.controller;
 
 import kr.co.farmstory.entity.ArticleEntity;
 import kr.co.farmstory.service.ArticleService;
+import kr.co.farmstory.vo.PageVO;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Slf4j
 @Controller
@@ -22,7 +22,7 @@ public class BoardController {
 
 
     @GetMapping("board/list")
-    public String list(Model model, String group, String cate){
+    public String list(Model model, String group, String cate, @RequestParam(defaultValue = "0", required = false) int pg){
 
         if(cate == null){
             switch (group) {
@@ -32,12 +32,18 @@ public class BoardController {
                 case "_market" -> cate = "market";
             }
         }
-        List<ArticleEntity> articles = articleService.boardList(cate, Pageable.ofSize(10));
 
-        log.info("getPageNum:" + Pageable.ofSize(10).getPageNumber());
+        pg = (pg == 0) ? 0 : (pg - 1);
 
+        Page<ArticleEntity> pageList = articleService.boardList(cate, pg);
+        PageVO pageVo = articleService.getPageInfo(pageList, pg);
+
+        model.addAttribute("pg", pg);
         model.addAttribute("group", group);
-        model.addAttribute("articles",articleService.boardList(cate, Pageable.ofSize(10)));
+        model.addAttribute("cate", cate);
+        model.addAttribute("articles", pageList);
+        model.addAttribute("pageVO", pageVo);
+
         return "board/list";
 
     }
