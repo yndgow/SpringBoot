@@ -25,18 +25,17 @@ document.addEventListener("DOMContentLoaded", ()=>{
 	// 아이디 중복 체크
 	btnCheckUid.addEventListener('click', ()=>{
 		let uid = document.querySelector('input[name=uid]')
-		url = '/Farmstory/user/uid/'+uid.value;
+        let url = '/Farmstory/user/uid/' + uid.value;
 		fetch(url)
 		.then(res => {
-			if(!res.ok) throw new Error(res.statusText);
+			if(!res.ok){
+                alert('이미 사용중인 아이디입니다.');
+                throw new Error(res.statusText);
+            }
 			return res.json();
 			})
 		.then(data => {
-			if(data.result > 0){
-				alert('이미 사용중인 아이디입니다.')
-			}else{
-				alert('사용가능한 아이디입니다.')
-			}
+				alert('사용가능한 아이디입니다.');
 			})
 		.catch(err => console.log(err)) ;
 	});

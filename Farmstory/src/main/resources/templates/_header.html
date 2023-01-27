@@ -16,14 +16,14 @@
         <p>
           <a th:href="@{/index}">HOME |</a>
 
-<!--          <th:block th:if="${#session}">-->
-<!--            <a sec:authentication="principal.user.nick"></a>-->
-<!--            <a th:href="@{/user/logout}"> | 로그아웃</a>-->
-<!--          </th:block>-->
-<!--          <th:block th:unless="${#session}">-->
-<!--            <a th:href="@{/user/login}">로그인 |</a>-->
-<!--            <a th:href="@{/user/terms}">회원가입 </a>-->
-<!--          </th:block>-->
+          <th:block th:if="${#session}">
+            <a sec:authentication="principal.user.nick"></a>
+            <a th:href="@{/user/logout}"> | 로그아웃</a>
+          </th:block>
+          <th:block th:unless="${#session}">
+            <a th:href="@{/user/login}">로그인 |</a>
+            <a th:href="@{/user/terms}">회원가입 </a>
+          </th:block>
           <a th:href="@{/user/customercenter}">| 고객센터</a>
         </p>
         <ul class="gnb">

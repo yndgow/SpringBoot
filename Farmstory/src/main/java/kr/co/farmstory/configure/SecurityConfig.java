@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -35,7 +36,7 @@ public class SecurityConfig {
         http.formLogin(form -> form
                 .loginPage("/user/login")
                 .defaultSuccessUrl("/index")
-                .failureUrl("/user/login?success=103")
+                .failureUrl("/user/login?success=100")
                 .usernameParameter("uid")
                 .passwordParameter("pass")
         );
@@ -44,7 +45,7 @@ public class SecurityConfig {
 
         http.logout(logout -> logout
                 .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
-                .logoutSuccessUrl("/user/login?success=100")
+                .logoutSuccessUrl("/user/login?success=200")
         );
 
         http.rememberMe( (rememberMe) -> rememberMe
@@ -66,4 +67,5 @@ public class SecurityConfig {
         jdbcTokenRepository.setDataSource(dataSource);
         return jdbcTokenRepository;
     }
+
 }
