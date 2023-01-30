@@ -45,4 +45,8 @@ public class ArticleService {
         return new PageVO(totalPage, startNumber, endNumber, hasPrev, hasNext, prevIndex, nextIndex, totalCount);
     }
 
+    public ArticleEntity selectArticle(String no){
+        return repo.findById(Integer.parseInt(no)).get();
+    }
+
 }

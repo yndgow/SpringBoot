@@ -23,4 +23,17 @@ public class ArticleDTO {
     private String regip;
     private LocalDateTime rdate;
 
+    public ArticleDTO(int no, int parent, int comment, String cate, String title, String content, int file, int hit, String regip, LocalDateTime rdate) {
+        this.no = no;
+        this.parent = parent;
+        this.comment = comment;
+        this.cate = cate;
+        this.title = title;
+        this.content = content;
+        this.file = file;
+        this.hit = hit;
+        this.regip = regip;
+        this.rdate = rdate;
+    }
+
 }

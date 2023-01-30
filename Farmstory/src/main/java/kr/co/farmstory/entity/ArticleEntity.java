@@ -1,6 +1,8 @@
 package kr.co.farmstory.entity;
 
 
+import kr.co.farmstory.dto.ArticleDTO;
+import kr.co.farmstory.dto.UserDTO;
 import lombok.*;
 
 import javax.persistence.*;
@@ -23,12 +25,14 @@ public class ArticleEntity {
     private String content;
     private int file;
     private int hit;
-
     private String regip;
     private LocalDateTime rdate;
 
     @ManyToOne(targetEntity = UserEntity.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "uid")
     private UserEntity user;
+
+
+
 
 }

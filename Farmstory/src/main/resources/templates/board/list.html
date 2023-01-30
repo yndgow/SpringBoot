@@ -16,7 +16,7 @@
 
         <tr th:each="article:${articles}">
             <td>[[${pageVO.totalCount - articleStat.index}]]</td>
-            <td><a th:href="@{/view(no=${article.no})}">[[${article.title}]] &#91;[[${article.comment}]]&#93;</a></td>
+            <td><a th:href="@{/board/view(group=${group}, cate=${cate}, pg=${pg}, no=${article.no})}">[[${article.title}]] &#91;[[${article.comment}]]&#93;</a></td>
             <td>[[${article.user.nick}]]</td>
             <td>[[${#strings.substring(article.rdate, 2, 10)}]]</td>
             <td>[[${article.hit}]]</td>
@@ -30,7 +30,7 @@
             <a th:href="@{/board/list(group=${group}, cate=${cate}, pg=${pageVO.prevIndex})}" class="prev" th:if="${pageVO.hasPrev}">이전</a>
 
             <th:block th:each="page : ${#numbers.sequence(pageVO.startNumber,pageVO.endNumber)}">
-                <a th:href="@{/board/list(group=${group}, cate=${cate}, pg=${page})}" th:class="${page == (pg+1) ? 'num current' : 'num'}"  th:text="${page}"></a>
+                <a th:href="@{/board/list(group=${group}, cate=${cate}, pg=${page})}" th:class="${page == pg ? 'num current' : 'num'}"  th:text="${page}"></a>
             </th:block>
 
             <a th:href="@{/board/list(group=${group}, cate=${cate}, pg=${pageVO.nextIndex})}" class="next" th:if="${pageVO.hasNext}">다음</a>

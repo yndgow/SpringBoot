@@ -41,4 +41,5 @@ public class UserEntity{
     public void userPass(String pass){
         this.pass = pass;
     }
+
 }

@@ -1,6 +1,11 @@
 package kr.co.farmstory.controller;
 
+import kr.co.farmstory.dto.ArticleDTO;
+import kr.co.farmstory.dto.UserDTO;
 import kr.co.farmstory.entity.ArticleEntity;
+import kr.co.farmstory.entity.UserEntity;
+import kr.co.farmstory.mapper.ArticleMapper;
+import kr.co.farmstory.mapper.UserMapper;
 import kr.co.farmstory.service.ArticleService;
 import kr.co.farmstory.vo.PageVO;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +25,6 @@ public class BoardController {
         this.articleService = articleService;
     }
 
-
     @GetMapping("board/list")
     public String list(Model model, String group, String cate, @RequestParam(defaultValue = "0", required = false) int pg){
 
@@ -32,11 +36,12 @@ public class BoardController {
                 case "_market" -> cate = "market";
             }
         }
+        int pagingPg = 0;
 
-        pg = (pg == 0) ? 0 : (pg - 1);
-
-        Page<ArticleEntity> pageList = articleService.boardList(cate, pg);
-        PageVO pageVo = articleService.getPageInfo(pageList, pg);
+        pagingPg = (pg == 0) ? 0 : (pg - 1);
+        if(pg == 0) pg = 1;
+        Page<ArticleEntity> pageList = articleService.boardList(cate, pagingPg);
+        PageVO pageVo = articleService.getPageInfo(pageList, pagingPg);
 
         model.addAttribute("pg", pg);
         model.addAttribute("group", group);
@@ -47,7 +52,22 @@ public class BoardController {
         return "board/list";
 
     }
+
+    @GetMapping("board/view")
+    public String view(String no, Model model, String group, String cate, String pg){
+
+        model.addAttribute("pg", pg);
+        model.addAttribute("group", group);
+        model.addAttribute("cate", cate);
+        ArticleDTO dto = ArticleMapper.toDto(articleService.selectArticle(no));
+        model.addAttribute("article", dto);
+        return "board/view";
+    }
+
+
+
     @GetMapping("board/write")
+
     public String write(){
         return "board/write";
     }

@@ -1,8 +1,8 @@
 <th:block th:include="@{_header.html}"/>
 <main id="board" class="view">
-<th:block th:include="@{board/_aside.html}"/>
+<th:block th:include="@{board/__${group}__.html}"/>
     <table>
-        <caption>글보기</caption>
+        <!--<caption>글보기</caption>-->
         <tr>
             <th>제목</th>
             <td><input type="text" name="title" th:value="${article.title}" readonly/></td>
@@ -17,10 +17,10 @@
         </tr>
     </table>
 
-    <div>
-        <a th:href="@{/delete}" class="btn btnRemove">삭제</a>
-        <a th:href="@{/modify}" class="btn btnModify">수정</a>
-        <a th:href="@{/list}" class="btn btnList">목록</a>
+    <div class="viewBtnDiv">
+        <a th:href="@{/board/{no}(no=${article.no})}" class="btn btnRemove">삭제</a>
+        <a th:href="@{/board/modify(no=${article.no})}" class="btn btnModify">수정</a>
+        <a th:href="@{/board/list(group=${group}, cate=${cate}, pg=${pg})}" class="btn btnList">목록</a>
     </div>
 
     <!-- 댓글목록 -->
