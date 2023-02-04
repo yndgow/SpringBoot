@@ -49,4 +49,8 @@ public class ArticleService {
         return repo.findById(Integer.parseInt(no)).get();
     }
 
+    public void deleteArticle(String no){
+        repo.deleteById(Integer.parseInt(no));
+    }
+
 }

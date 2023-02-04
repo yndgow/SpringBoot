@@ -18,7 +18,7 @@
     </table>
 
     <div class="viewBtnDiv">
-        <a th:href="@{/board/{no}(no=${article.no})}" class="btn btnRemove">삭제</a>
+        <a th:href="@{/board/delete(no=${article.no})}" class="btn btnRemove">삭제</a>
         <a th:href="@{/board/modify(no=${article.no})}" class="btn btnModify">수정</a>
         <a th:href="@{/board/list(group=${group}, cate=${cate}, pg=${pg})}" class="btn btnList">목록</a>
     </div>

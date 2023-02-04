@@ -1,11 +1,8 @@
 package kr.co.farmstory.controller;
 
 import kr.co.farmstory.dto.ArticleDTO;
-import kr.co.farmstory.dto.UserDTO;
 import kr.co.farmstory.entity.ArticleEntity;
-import kr.co.farmstory.entity.UserEntity;
 import kr.co.farmstory.mapper.ArticleMapper;
-import kr.co.farmstory.mapper.UserMapper;
 import kr.co.farmstory.service.ArticleService;
 import kr.co.farmstory.vo.PageVO;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Slf4j
@@ -63,6 +61,14 @@ public class BoardController {
         model.addAttribute("article", dto);
         return "board/view";
     }
+
+    @GetMapping("board/delete")
+    public String delete(@PathVariable String no){
+        articleService.deleteArticle(no);
+        return "redirect:/board/list";
+    }
+
+
 
 
 
