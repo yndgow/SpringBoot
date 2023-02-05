@@ -730,7 +730,6 @@ main #recent td{
 #board.write {
     width: 100%;
     height: auto;
-    margin: 60px auto;
     overflow: hidden;
 }
 #board.write table {
@@ -770,16 +769,16 @@ main #recent td{
     border: none;
 }
 
-#board.write > form > div {
+#board.write form > div {
     float: right;
     margin-top: 10px;
 }
-#board.write > form .btn  {
+#board.write form .btn  {
     padding: 8px;
     border: 1px solid #bebebe;
 }
-#board.write > form .btnCancel {}
-#board.write > form .btnComplete {
+#board.write form .btnCancel {}
+#board.write form .btnComplete {
     padding: 7px;
     border: 1px solid #3b3c3f;
     background: #4b545e;

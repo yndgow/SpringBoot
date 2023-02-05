@@ -1,5 +1,7 @@
 package kr.co.farmstory.dto;
 
+import kr.co.farmstory.entity.ArticleEntity;
+import kr.co.farmstory.entity.UserEntity;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -18,12 +20,13 @@ public class ArticleDTO {
     private String title;
     private String content;
     private int file;
+    private String fname;
     private int hit;
     private String uid;
     private String regip;
     private LocalDateTime rdate;
 
-    public ArticleDTO(int no, int parent, int comment, String cate, String title, String content, int file, int hit, String regip, LocalDateTime rdate) {
+    public ArticleDTO(int no, int parent, int comment, String cate, String title, String content, int file, int hit, String regip, LocalDateTime rdate, String fname) {
         this.no = no;
         this.parent = parent;
         this.comment = comment;
@@ -34,6 +37,7 @@ public class ArticleDTO {
         this.hit = hit;
         this.regip = regip;
         this.rdate = rdate;
+        this.fname = fname;
     }
 
 }

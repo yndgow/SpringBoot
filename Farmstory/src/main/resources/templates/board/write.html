@@ -2,12 +2,12 @@
 
 <main id="board" class="write">
 
-<th:block th:include="@{board/_aside.html}"/>
+<th:block th:include="@{board/__${group}__.html}"/>
 
-<form th:action="@{/write}" method="post" enctype="multipart/form-data">
+<form th:action="@{/board/write}" method="post" enctype="multipart/form-data">
     <!--        <input type="hidden" name="uid" th:value="${#authentication.principal.user.uid}">-->
     <table>
-        <caption>글쓰기</caption>
+        <!--<caption>글쓰기</caption>-->
         <tr>
             <th>제목</th>
             <td><input type="text" name="title" placeholder="제목을 입력하세요."/></td>
@@ -23,7 +23,7 @@
     </table>
 
     <div>
-        <a th:href="@{/list}" class="btn btnCancel">취소</a>
+        <a th:href="@{/board/list}" class="btn btnCancel">취소</a>
         <input type="submit" value="작성완료" class="btn btnComplete"/>
     </div>
 </form>

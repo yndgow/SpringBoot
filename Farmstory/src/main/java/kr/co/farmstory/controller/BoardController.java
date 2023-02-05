@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Slf4j
@@ -63,18 +64,28 @@ public class BoardController {
     }
 
     @GetMapping("board/delete")
-    public String delete(@PathVariable String no){
+    public String delete(String no, String group, String cate, String pg){
         articleService.deleteArticle(no);
-        return "redirect:/board/list";
+        group = "?group=" + group;
+        cate = "&cate=" + cate;
+        pg = "&pg=" + pg;
+
+        return "redirect:/board/list" + group + cate + pg;
     }
 
-
-
-
-
     @GetMapping("board/write")
-
-    public String write(){
+    public String write(String group, String cate, Model model){
+        model.addAttribute("group", group);
+        model.addAttribute("cate", cate);
         return "board/write";
+    }
+
+    @PostMapping("board/write")
+    public String write(ArticleDTO articleDTO, String group, String cate){
+        group = "?group=" + group;
+        cate = "&cate=" + cate;
+        articleService.insertArticle(articleDTO);
+
+        return "redirect:board/list" + group + cate;
     }
 }

@@ -7,4 +7,9 @@ public class ArticleMapper {
     public static ArticleDTO toDto(ArticleEntity entity){
         return new ArticleDTO(entity.getNo(), entity.getParent(), entity.getComment(), entity.getCate(), entity.getTitle(), entity.getContent(), entity.getFile(), entity.getHit(), entity.getRegip(), entity.getRdate());
     }
+
+    public static ArticleEntity toEntity(ArticleDTO dto){
+        return new ArticleEntity(dto);
+    }
+
 }

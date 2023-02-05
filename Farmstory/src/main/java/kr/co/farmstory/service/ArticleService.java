@@ -1,6 +1,9 @@
 package kr.co.farmstory.service;
 
+import kr.co.farmstory.dto.ArticleDTO;
 import kr.co.farmstory.entity.ArticleEntity;
+import kr.co.farmstory.entity.UserEntity;
+import kr.co.farmstory.mapper.ArticleMapper;
 import kr.co.farmstory.repo.ArticleRepository;
 import kr.co.farmstory.vo.PageVO;
 import org.springframework.data.domain.Page;
@@ -51,6 +54,12 @@ public class ArticleService {
 
     public void deleteArticle(String no){
         repo.deleteById(Integer.parseInt(no));
+    }
+
+    public void insertArticle(ArticleDTO articleDTO){
+        ArticleEntity article = ArticleMapper.toEntity(articleDTO);
+
+        repo.save(article);
     }
 
 }
