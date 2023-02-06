@@ -39,5 +39,4 @@ public class ArticleDTO {
         this.rdate = rdate;
         this.fname = fname;
     }
-
 }
