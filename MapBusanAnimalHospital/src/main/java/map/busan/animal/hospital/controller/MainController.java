@@ -29,6 +29,7 @@ public class MainController {
         // api 정보
         String apiURL = "http://apis.data.go.kr/6260000/BusanAnimalHospService/getTblAnimalHospital";
         String serviceKey = "3LkZCX2iLmCkelmjUIVD6Tjj%2BomiGmfSAT9Bs3L2Wyxuxte9b2CLEV0sChJnvjpRGunBIcLzm8IEXt91Kpxppg%3D%3D";
+        //String serviceKey = "3LkZCX2iLmCkelmjUIVD6Tjj+omiGmfSAT9Bs3L2Wyxuxte9b2CLEV0sChJnvjpRGunBIcLzm8IEXt91Kpxppg==";
 
         String resultType = "json";
         String pageNo = "1";
