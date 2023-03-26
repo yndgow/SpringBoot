@@ -18,6 +18,8 @@
             let items = [[${items}]];
 
             for(let item of items){
+                console.log(item.lon)
+
                 // 마커 생성
                 let marker = new kakao.maps.Marker({
                                 title: item.animal_hospital,
