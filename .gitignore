@@ -265,3 +265,7 @@ fabric.properties
 .idea/**/azureSettings.xml
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij
+/Ch00/src/main/resources/application-h2.yml
+/Ch00/src/main/resources/application-oauth.yml
+/Kmarket2
+/p3/ChimAcademy
