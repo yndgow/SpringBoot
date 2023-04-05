@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -13,6 +13,13 @@
 		<div class="row">
 			<a href="/login">로그인</a>
 			<a href="/">가입하기</a>
+			<a href="/logout">로그아웃</a>
+		</div>
+		<div>
+			<p th:text="${attr.name}"></p>
+			<p th:text="${attr.email}"></p>
+			<p th:text="${attr.provider}"></p>
+			
 		</div>
 	</div>
 

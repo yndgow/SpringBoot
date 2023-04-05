@@ -42,22 +42,21 @@ public class SecurityConfig {
         http.csrf(csrf -> csrf
         		.ignoringRequestMatchers("/h2-console/**")
         		.disable());
+        // h2
+        http.headers(headers -> headers.frameOptions().disable());
+        // oauth2
+        http.oauth2Login(login -> login
+                .defaultSuccessUrl("/list", true)
+                .userInfoEndpoint()
+                .userService(oAuthService));
         
-//        http.logout(logout -> logout
-//                .invalidateHttpSession(true)
-//                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-//                .logoutSuccessUrl("/login?success=200")
-//                .permitAll()
-//                );
-        // h2 데이터베이스용
-        http.headers().frameOptions().disable();
         
-        // oAuth2
-        http.oauth2Login()
-        .defaultSuccessUrl("/list", true)
-        .userInfoEndpoint()
-        .userService(oAuthService);
-
+        
+        http.logout(logout -> logout
+        		.logoutUrl("/logout")
+        		.logoutSuccessUrl("/")
+        		);
+        
         
         
         return http.build();

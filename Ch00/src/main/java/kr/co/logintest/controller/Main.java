@@ -12,6 +12,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -55,7 +56,10 @@ public class Main {
 	}
 	
 	@GetMapping("list")
-	public String list() {
+	public String list(Authentication authentication, Model model) {
+		OAuth2User auth2User = (OAuth2User)authentication.getPrincipal();
+		Map<String, Object> attributes = auth2User.getAttributes();
+		model.addAttribute("attr", attributes);
 		return "list";
 	}
 	
@@ -78,7 +82,7 @@ public class Main {
 		requestBody.add("state", state);
 		requestBody.add("grant_type", "authorization_code");
 		requestBody.add("client_id", "er4btgK9JCf2iWZiQ2bJ");
-		requestBody.add("client_secret", "FmKQKrBxOh");
+		requestBody.add("client_secret", "");
 		//갱신시 토큰 추가
 		requestBody.add("refresh_token", "LxbQaXWvBWjAprripyoBvDPh0qp6Tsl6BJZCvxOeisJ6DWcZvKkqUSwacT2fUcFwooSvZ9Mf1J8U0nKZr1RIbEfsKGNpGqkpYgTNdCbipAfI1ZH8FchpLPGC0JQThisGvxZq");
 		HttpHeaders headers = new HttpHeaders();
