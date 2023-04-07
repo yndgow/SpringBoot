@@ -47,6 +47,7 @@ public class OAuthService implements OAuth2UserService<OAuth2UserRequest, OAuth2
 	    log.info("user: "+ oAuth2User);
 	    MemberProfile memberProfile = OAuthAttributes.extract(registrationId, attributes); // registrationId에 따라 유저 정보를 통해 공통된 UserProfile 객체로 만들어 줌
 	    memberProfile.setProvider(registrationId);
+	    
 	    Member member = saveOrUpdate(memberProfile);
 	    log.info("user: "+ member);
 	    Map<String, Object> customAttribute = customAttribute(attributes, userNameAttributeName, memberProfile, registrationId);
