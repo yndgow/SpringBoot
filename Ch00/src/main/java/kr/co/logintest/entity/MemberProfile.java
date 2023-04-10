@@ -20,7 +20,7 @@ public class MemberProfile {
                      .name(name)
                      .email(email)
                      .provider(provider)
-                     .level(level)
+                     .level(1)
                      .uid(uid)
                      .build();
     }

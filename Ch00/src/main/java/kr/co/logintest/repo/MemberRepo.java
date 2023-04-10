@@ -9,4 +9,5 @@ import kr.co.logintest.entity.Member;
 public interface MemberRepo extends JpaRepository<Member, Long>{
 	 Optional<Member> findByEmailAndProvider(String email, String provider);
 	 Member findByNickname(String nickname);
+	 Member findByUid(String uid);
 }

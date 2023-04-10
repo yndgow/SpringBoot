@@ -23,6 +23,7 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import kr.co.logintest.config.MyUserDetails;
 import kr.co.logintest.entity.Member;
 import kr.co.logintest.repo.MemberRepo;
 import kr.co.logintest.token.NaverResp;
@@ -51,16 +52,55 @@ public class Main {
 	
 	@PostMapping("join")
 	public String join(Member member) {
+		String nPass = encoder.encode(member.getPass());
+		member.setUid(member.getUid());
+		member.setPass(nPass);
+		member.setLevel(1);
+		repo.save(member);
 		
 		return "redirect:/login";
 	}
 	
 	@GetMapping("list")
 	public String list(Authentication authentication, Model model) {
-		OAuth2User auth2User = (OAuth2User)authentication.getPrincipal();
-		Map<String, Object> attributes = auth2User.getAttributes();
-		model.addAttribute("attr", attributes);
-		return "list";
+		
+		// 로그인 체크
+	    if (authentication == null) {
+	        return "redirect:/logout";
+	    }
+	    
+	    Object principal = authentication.getPrincipal();
+	    Member member = null;
+	    
+	    // oAuth2 로그인일 경우
+	    if (principal instanceof OAuth2User) {
+	        OAuth2User oauth2User = (OAuth2User) principal;
+	        String provider = (String) oauth2User.getAttributes().get("provider");
+	        
+	        // oAuth2 제공 회사에 따라 id값 구하기
+	        switch (provider) {
+	            case "naver":
+	                member = repo.findByUid((String) ((Map<String, Object>) oauth2User.getAttributes().get("response")).get("id"));
+	                break;
+	            case "kakao":
+	                member = repo.findByUid((String) oauth2User.getAttributes().get("id").toString());
+	                break;
+	            case "google":
+	                member = repo.findByUid((String) oauth2User.getAttributes().get("sub"));
+	                break;
+	            default:
+	                throw new IllegalArgumentException("Unknown OAuth2 provider: " + provider);
+	        }
+	        
+	    // 일반 로그인일 경우
+	    } else if (principal instanceof MyUserDetails) {
+	        member = ((MyUserDetails) principal).getUser();
+	    } else {
+	        throw new IllegalArgumentException("Unknown authentication type: " + principal.getClass().getName());
+	    }
+	    
+	    model.addAttribute("attr", member);
+	    return "list";
 	}
 	
 	@ResponseBody

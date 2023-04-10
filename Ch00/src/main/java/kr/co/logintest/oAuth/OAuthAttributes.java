@@ -13,7 +13,7 @@ public enum OAuthAttributes {
         MemberProfile memberProfile = new MemberProfile();
         memberProfile.setName((String) attributes.get("name"));
         memberProfile.setEmail((String) attributes.get("email"));
-        memberProfile.setUid("google_"+(String)attributes.get("sub"));
+        memberProfile.setUid((String)attributes.get("sub"));
         return memberProfile;
     }),
 
@@ -23,7 +23,7 @@ public enum OAuthAttributes {
         MemberProfile memberProfile = new MemberProfile();
         
         memberProfile.setName((String) response.get("name"));
-        memberProfile.setUid("naver_"+(String)response.get("id"));
+        memberProfile.setUid((String)response.get("id"));
         memberProfile.setEmail(((String) response.get("email")));
         return memberProfile;
     }),
@@ -35,7 +35,7 @@ public enum OAuthAttributes {
     	
         Map<String, Object> kakaoAccount = (Map<String, Object>) attributes.get("kakao_account");
         long id = (long)attributes.get("id");
-        memberProfile.setUid("kakao_"+Long.toString(id));
+        memberProfile.setUid(Long.toString(id));
         
         // kakao_account안에 또 profile이라는 JSON객체가 있다. (nickname, profile_image)
         Map<String, Object> kakaoProfile = (Map<String, Object>)kakaoAccount.get("profile");

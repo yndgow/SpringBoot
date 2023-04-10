@@ -1,9 +1,7 @@
 package kr.co.logintest.entity;
 
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
-import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,12 +9,13 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@NoArgsConstructor(access = AccessLevel.PROTECTED) //기본 생성자 만들어줌
+@Setter
+@NoArgsConstructor //기본 생성자 만들어줌
 @DynamicUpdate //update 할때 실제 값이 변경됨 컬럼으로만 update 쿼리를 만듬
 @DynamicInsert
 @Entity //JPA Entity 임을 명시
@@ -28,26 +27,25 @@ public class Member {
     @Column(name = "member_id")
     private Long id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = true)
     private String name;
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email", nullable = true)
     private String email;
 
-    @Column(name = "provider", nullable = false)
+    @Column(name = "provider", nullable = true)
     private String provider;
 
     @Column(name = "nickname", nullable = true, unique = true)
     private String nickname;
-    
+
     @Column(name = "level", nullable = true)
-    @ColumnDefault("1")
     private int level;
     
     @Column(name = "pass", nullable = true)
     private String pass;
     
-    @Column(name = "uid")
+    @Column(name = "uid", nullable = false, unique = true)
     private String uid;
     
 
@@ -58,7 +56,7 @@ public class Member {
         this.email = email;
         this.provider = provider;
         this.nickname = nickname;
-        this.level = level;
+        this.level = 1;
         this.uid = uid;
     }
 
@@ -68,4 +66,5 @@ public class Member {
         this.email = email;
         return this;
     }
+
 }
