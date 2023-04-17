@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import kr.co.voard.confg.MyUserDetails;
 import kr.co.voard.confg.SecurityUserService;
 import kr.co.voard.jwt.JWTUtil;
+import kr.co.voard.repository.UserEntity;
 import kr.co.voard.vo.UserVO;
 import lombok.extern.slf4j.Slf4j;
 
@@ -57,6 +58,23 @@ public class UserController {
 		// 데이터 출력
 		Map<String, Object> resultMap = new HashMap<>();
 		resultMap.put("accessToken", token);
+		
+		resultMap.put("user", myUserDetails.getUser());
+		
+		return resultMap;
+	}
+	
+	@GetMapping("/user/auth")
+	public Map<String, Object> auth(Authentication authentication) {
+		
+		MyUserDetails myUserDetails = (MyUserDetails) authentication.getPrincipal();
+		
+		// 토큰 유효성 검사
+		UserEntity user = myUserDetails.getUser();
+		
+		// 데이터 출력
+		Map<String, Object> resultMap = new HashMap<>();
+		resultMap.put("user", user);
 		
 		return resultMap;
 	}
