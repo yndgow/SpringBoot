@@ -1,6 +1,7 @@
 package kr.co.voard.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,17 +9,19 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.servlet.http.HttpServletRequest;
 import kr.co.voard.confg.MyUserDetails;
 import kr.co.voard.confg.SecurityUserService;
 import kr.co.voard.jwt.JWTUtil;
 import kr.co.voard.repository.UserEntity;
+import kr.co.voard.service.TermsService;
+import kr.co.voard.service.UserService;
+import kr.co.voard.vo.TermsVO;
 import kr.co.voard.vo.UserVO;
 import lombok.extern.slf4j.Slf4j;
 
@@ -35,6 +38,30 @@ public class UserController {
 	@Autowired
 	private JWTUtil jwtUtil;
 	
+	@Autowired
+	private TermsService termsService;
+	
+	@Autowired
+	private UserService userService;
+	
+	// 약관 보기
+	@GetMapping("/user/terms")
+	public List<TermsVO> terms() {
+		return termsService.selectTerms();
+		
+	}
+	
+	// 가입하기
+	@PostMapping("/user/register")
+	public void register(@RequestBody UserVO vo, HttpServletRequest req) {
+		userService.insertUser(vo, req);
+	}
+	
+	// 아이디 중복확인
+	@GetMapping("/user/countUid")
+	public int countUid(String uid) {
+		return userService.countUser(uid);
+	}
 	
 	@PostMapping("/user/login")
 	public Map<String, Object> login(@RequestBody UserVO vo) {
