@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import jakarta.servlet.http.HttpServletRequest;
 import kr.co.voard.dao.UserDAO;
-import kr.co.voard.repository.UserEntity;
+import kr.co.voard.entity.UserEntity;
 import kr.co.voard.repository.UserRepo;
 import kr.co.voard.vo.UserVO;
 

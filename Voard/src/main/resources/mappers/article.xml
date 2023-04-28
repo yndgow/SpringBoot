@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.voard.dao.ArticleDAO">
+
+	<insert id="insertArticle" useGeneratedKeys="true" keyProperty="no">
+		insert into `board_article` set 
+		`title` = #{title},
+		`content` = #{content},
+		<if test="fname == null">
+			`file` = 0,
+		</if>
+		<if test="fname != null">
+			`file` = 1,
+		</if>
+		`uid` = #{uid},
+		`regip` = #{regip},
+		`rdate` = NOW();
+	</insert>
+	
+	<select id="selectArticles" resultType="kr.co.voard.vo.ArticleVO">
+		SELECT a.*, b.nick FROM `board_article` AS a
+		JOIN `board_user` AS b 
+		on a.uid = b.uid
+		WHERE `parent` = 0
+		ORDER BY (`no`) DESC
+		limit #{start}, 10;
+	</select>
+	
+	<select id="selectCountTotalArticle" resultType="int">
+		select count(`no`) from `board_article` where `parent` = 0;
+	</select>
+	
+	<delete id="deleteArticle">
+		delete from board_article where no = #{no};
+	</delete>
+	
+</mapper>

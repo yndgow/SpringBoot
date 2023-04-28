@@ -12,13 +12,14 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.servlet.http.HttpServletRequest;
 import kr.co.voard.confg.MyUserDetails;
 import kr.co.voard.confg.SecurityUserService;
+import kr.co.voard.entity.UserEntity;
 import kr.co.voard.jwt.JWTUtil;
-import kr.co.voard.repository.UserEntity;
 import kr.co.voard.service.TermsService;
 import kr.co.voard.service.UserService;
 import kr.co.voard.vo.TermsVO;
@@ -26,6 +27,7 @@ import kr.co.voard.vo.UserVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@RequestMapping("api")
 @RestController
 public class UserController {
 	

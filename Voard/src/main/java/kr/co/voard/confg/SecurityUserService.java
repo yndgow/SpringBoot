@@ -5,7 +5,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import kr.co.voard.repository.UserEntity;
+import kr.co.voard.entity.UserEntity;
 import kr.co.voard.repository.UserRepo;
 import lombok.extern.slf4j.Slf4j;
 

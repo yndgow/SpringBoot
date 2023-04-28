@@ -36,9 +36,9 @@ public class ArticleService{
 		// 글 등록
 		int result = dao.insertArticle(vo);
 		// 파일 업로드
-		FileVO fvo = fileUpload(vo);
+//		FileVO fvo = fileUpload(vo);
 		// 파일 등록
-		if(fvo != null) dao.insertFile(fvo);
+//		if(fvo != null) dao.insertFile(fvo);
 		
 		return result;	
 	}

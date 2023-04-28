@@ -1,12 +1,16 @@
-package kr.co.voard.vo;
+package kr.co.voard.entity;
 
 
 import org.springframework.web.multipart.MultipartFile;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.Data;
 
 @Data
-public class ArticleVO {
+//@Entity
+//@Table(name = "board_article")
+public class ArticleEntity {
 	private int no;
 	private int parent;
 	private int comment;
@@ -20,12 +24,9 @@ public class ArticleVO {
 	private String regip;
 	private String rdate;
 	
-//	public String getRdate() {
-//		return rdate.substring(2,10);
-//	}
+	public String getRdate() {
+		return rdate.substring(2,10);
+	}
 	
-	// 추가필드
-	private String nick;
-	private FileVO fileVO;
 	
 }

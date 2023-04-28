@@ -1,4 +1,4 @@
-package kr.co.voard.repository;
+package kr.co.voard.entity;
 
 import java.time.LocalDateTime;
 
