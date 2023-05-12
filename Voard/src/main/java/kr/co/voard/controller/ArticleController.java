@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import jakarta.servlet.http.HttpServletRequest;
+import kr.co.voard.entity.ArticleEntity;
 import kr.co.voard.service.ArticleService;
 import kr.co.voard.vo.ArticleVO;
 import kr.co.voard.vo.FileVO;
@@ -51,11 +52,11 @@ public class ArticleController {
 		 
 		return resultMap;
 	}
-	@GetMapping("view")
-	public String view(int no, Model m) {
+	
+	@GetMapping("{no}")
+	public ArticleEntity view(@PathVariable int no) {
 		
-		m.addAttribute("article", articleService.selectArticle(no));
-		return "view";
+		return articleService.selectArticle(no);
 	}
 	
 	@PostMapping("write")

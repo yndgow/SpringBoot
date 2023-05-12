@@ -21,6 +21,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.voard.dao.ArticleDAO;
+import kr.co.voard.entity.ArticleEntity;
+import kr.co.voard.repository.ArticleRepo;
 import kr.co.voard.vo.ArticleVO;
 import kr.co.voard.vo.FileVO;
 import lombok.extern.slf4j.Slf4j;
@@ -31,6 +33,10 @@ public class ArticleService{
 
 	@Autowired
 	private ArticleDAO dao;
+	
+	@Autowired
+	private ArticleRepo articleRepo;
+	 
 	
 	public int insertArticle(ArticleVO vo) {
 		// 글 등록
@@ -43,13 +49,14 @@ public class ArticleService{
 		return result;	
 	}
 
+	// JPA
+	public ArticleEntity selectArticle(int no) {
+		return articleRepo.findById(no).orElse(null);
+	}
+	
 	public int selectCountTotalArticle() {
 		return dao.selectCountTotalArticle();
 	};
-	
-	public ArticleVO selectArticle(int no) {
-		return dao.selectArticle(no);
-	}
 
 	public List<ArticleVO> selectArticles(int start) {
 		return dao.selectArticles(start);
